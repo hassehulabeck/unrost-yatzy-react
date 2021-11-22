@@ -1,0 +1,30 @@
+.actionContainer {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.dies {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+}
+
+section>div {
+    padding: 1rem;
+    background-color: wheat;
+}
+
+.roller {
+    border: none;
+    padding: 1rem;
+}
+
+.active {
+    background-color: greenyellow;
+}
+
+.locked {
+    background-color: peru;
+}

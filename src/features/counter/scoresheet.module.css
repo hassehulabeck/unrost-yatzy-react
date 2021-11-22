@@ -1,0 +1,22 @@
+.scorelist {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+}
+
+.scorelist li {
+    background-color: antiquewhite;
+    flex-basis: 66%;
+}
+
+.scorelist li:nth-of-type(even) {
+    background-color: azure;
+}
+
+.scorelist button,
+.scorelist div {
+    border: none;
+    background-color: peachpuff;
+    padding: 0.3rem 1rem;
+    text-align: right;
+}
