@@ -35,6 +35,46 @@ const initialState = {
             name: "Tvåor",
             value: null,
         },
+        {
+            name: "Treor",
+            value: 4,
+        },
+        {
+            name: "Fyror",
+            value: 4,
+        },
+        {
+            name: "Femmor",
+            value: 4,
+        },
+        {
+            name: "Sexor",
+            value: null,
+        },
+        {
+            name: "Summa",
+            value: null,
+        },
+        {
+            name: "Bonus",
+            value: null,
+        },
+        {
+            name: "Ett par",
+            value: null,
+        },
+        {
+            name: "Två par",
+            value: null,
+        },
+        {
+            name: "Tretal",
+            value: null,
+        },
+        {
+            name: "Fyrtal",
+            value: null,
+        },
     ],
 };
 
@@ -68,5 +108,6 @@ export const selectSum = (state) => state.yatzy.sum;
 export const selectUpperSum = (state) => state.yatzy.upperSum;
 export const selectLowerSum = (state) => state.yatzy.lowerSum;
 export const selectBonus = (state) => state.yatzy.bonus;
+export const selectScoresheet = (state) => state.yatzy.scoresheet;
 
 export default yatzySlice.reducer;

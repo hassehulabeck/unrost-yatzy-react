@@ -2,21 +2,25 @@
     display: flex;
     flex-flow: row wrap;
     list-style-type: none;
+    padding: 0 1rem;
 }
 
 .scorelist li {
     background-color: antiquewhite;
-    flex-basis: 66%;
+    flex-basis: 100%;
+    display: flex;
 }
 
 .scorelist li:nth-of-type(even) {
     background-color: azure;
 }
 
-.scorelist button,
 .scorelist div {
-    border: none;
-    background-color: peachpuff;
-    padding: 0.3rem 1rem;
+    flex: 1;
     text-align: right;
+}
+
+.scorelist div:first-child {
+    text-align: left;
+    padding-left: 2rem;
 }
