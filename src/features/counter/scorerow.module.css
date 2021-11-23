@@ -1,0 +1,9 @@
+.boldy {
+    font-weight: 700;
+    border-top: thin solid black;
+}
+
+.bonus {
+    color: darkgray;
+    border-bottom: thin solid black;
+}

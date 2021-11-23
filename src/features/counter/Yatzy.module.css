@@ -12,13 +12,20 @@
 }
 
 section>div {
-    padding: 1rem;
+    padding: 0.2rem;
     background-color: wheat;
+    font-size: 4rem;
 }
 
 .roller {
     border: none;
     padding: 1rem;
+    cursor: grab;
+}
+
+.inactive {
+    background-color: pink;
+    cursor: pointer;
 }
 
 .active {

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uppersums } from "./scoreFunctions";
 
 const initialState = {
     dies: [{
@@ -26,30 +27,36 @@ const initialState = {
     bonus: 0,
     lowerSum: 0,
     sum: 0,
-    roll: 2,
+    roll: 3,
     scoresheet: [{
             name: "Ettor",
             value: null,
+            isUsed: false,
         },
         {
             name: "Tvåor",
             value: null,
+            isUsed: false,
         },
         {
             name: "Treor",
             value: 4,
+            isUsed: false,
         },
         {
             name: "Fyror",
             value: 4,
+            isUsed: false,
         },
         {
             name: "Femmor",
             value: 4,
+            isUsed: false,
         },
         {
             name: "Sexor",
             value: null,
+            isUsed: false,
         },
         {
             name: "Summa",
@@ -75,6 +82,30 @@ const initialState = {
             name: "Fyrtal",
             value: null,
         },
+        {
+            name: "Liten stege",
+            value: null,
+        },
+        {
+            name: "Stor stege",
+            value: null,
+        },
+        {
+            name: "Kåk",
+            value: null,
+        },
+        {
+            name: "Chans",
+            value: null,
+        },
+        {
+            name: "Yatzy",
+            value: null,
+        },
+        {
+            name: "Summa",
+            value: null,
+        },
     ],
 };
 
@@ -88,6 +119,13 @@ export const yatzySlice = createSlice({
                     die.value = Math.ceil(Math.random() * 6);
                 }
             });
+            // Sum all of the upper possible fields.
+            for (let i = 0; i < 6; i++) {
+                if (!state.scoresheet[i].isUsed) {
+                    state.scoresheet[i].value = uppersums(state.dies, i + 1);
+                }
+            }
+            state.roll -= 1;
         },
         notate: (state, action) => {
             state.scoresheet.forEach((item) => {
@@ -105,6 +143,7 @@ export const yatzySlice = createSlice({
 export const { roll, notate, lock } = yatzySlice.actions;
 export const selectDice = (state) => state.yatzy.dies;
 export const selectSum = (state) => state.yatzy.sum;
+export const selectRoll = (state) => state.yatzy.roll;
 export const selectUpperSum = (state) => state.yatzy.upperSum;
 export const selectLowerSum = (state) => state.yatzy.lowerSum;
 export const selectBonus = (state) => state.yatzy.bonus;

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { roll, lock, selectDice, selectSum } from "./yatzySlice";
+import { roll, lock, selectDice, selectSum, selectRoll } from "./yatzySlice";
 import styles from "./Yatzy.module.css";
 
 export function Dice() {
-    const sum = useSelector(selectSum);
     const dice = useSelector(selectDice);
     const dispatch = useDispatch();
+    const rolls = useSelector(selectRoll);
 
     // Do things once - "ComponentDidMount"
     useEffect(() => {
@@ -24,15 +24,21 @@ export function Dice() {
     }, []);
 
     let dies = dice.map((die, index) => {
-        // let dieIcon = 2680 + die.value;
-        // dieIcon = `&#${dieIcon};`;
+        const icons = [
+            "\u2680",
+            "\u2681",
+            "\u2682",
+            "\u2683",
+            "\u2684",
+            "\u2685",
+        ];
         return (
             <div
                 key={index}
                 onClick={() => dispatch(lock(index))}
                 className={die.isLocked ? styles.locked : styles.active}
             >
-                {die.value}
+                {icons[die.value - 1]}
             </div>
         );
     });
@@ -40,10 +46,13 @@ export function Dice() {
     return (
         <section className="styles.actionContainer">
             <section className={styles.dies}> {dies}</section>
-            <button className={styles.roller} onClick={() => dispatch(roll())}>
+            <button
+                className={styles.roller && rolls === 0 ? styles.inactive : ""}
+                onClick={() => dispatch(roll())}
+                disabled={rolls < 1 ? "disabled" : ""}
+            >
                 Roll
             </button>
-            <p>Summa: {sum}</p>
         </section>
     );
 }
